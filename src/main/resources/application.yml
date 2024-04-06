@@ -1,3 +1,12 @@
 spring:
   application:
     name: backend
+  profiles:
+    active: local
+    group:
+      local:
+        - common
+        - local
+      prod:
+        - common
+        - prod
