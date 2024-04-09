@@ -11,4 +11,4 @@ logging:
         hibernate:
             SQL: debug
             type: trace
-      root: debug
+      com.syu.backend: debug
