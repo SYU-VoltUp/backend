@@ -1,8 +1,9 @@
 package com.syu.backend.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import com.syu.backend.enums.ChargerType;
+import com.syu.backend.enums.KindDetail;
+import com.syu.backend.enums.converter.ChargerTypeConverter;
+import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -17,8 +18,9 @@ public class Charger {
     @Column(name = "name", length = 200, nullable = false)
     private String name;
 
+    @Convert(converter = ChargerTypeConverter.class)
     @Column(name = "charger_type", nullable = false)
-    private int chargerType;
+    private ChargerType chargerType;
 
     @Column(name = "address", length = 200, nullable = false)
     private String address;
@@ -41,8 +43,9 @@ public class Charger {
     @Column(name = "zscode", nullable = false)
     private int zscode;
 
+    @Enumerated(value = EnumType.STRING)
     @Column(name = "kind_detail", nullable = false)
-    private String kindDetail;
+    private KindDetail kindDetail;
 
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
