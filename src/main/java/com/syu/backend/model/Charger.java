@@ -52,4 +52,7 @@ public class Charger {
 
     @Column(name = "apt_code", nullable = true)
     private String ApartmentCode;
+
+    @Column(name = "geohash", nullable = true)
+    private String geohash;
 }

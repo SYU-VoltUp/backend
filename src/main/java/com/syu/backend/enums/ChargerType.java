@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @JsonPropertyOrder({"code", "type", "connectorTypes"})
@@ -28,11 +30,17 @@ public enum ChargerType {
         this.connectorTypes = List.of(connectorTypes);
     }
 
-    public static List<ChargerType> getChargerTypes(List<String> connectorTypes) {
+    public static List<ChargerType> getChargerTypesByConnectorTypes(List<String> connectorTypes) {
         //하나라도 포함되면 반환
         return Stream.of(ChargerType.values())
                 .filter(chargerType -> chargerType.getConnectorTypes().stream().anyMatch(connectorTypes::contains))
                 .toList();
+    }
+
+    public static List<ChargerType> getChargerTypesByChargerCodes(List<String> chargerCodes) {
+        return Stream.of(ChargerType.values())
+                .filter(chargerType -> chargerCodes.contains(chargerType.getCode()))
+                .collect(Collectors.toList());
     }
 
     public static ChargerType of(String code) {
@@ -41,6 +49,13 @@ public enum ChargerType {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("Unknown code: " + code));
 
+    }
+
+    public static Set<String> getConnectorTypesFromChargerCodes(List<String> chargerCodes) {
+        return Stream.of(ChargerType.values())
+                .filter(chargerType -> chargerCodes.contains(chargerType.getCode()))
+                .flatMap(chargerType -> chargerType.getConnectorTypes().stream())
+                .collect(Collectors.toSet());
     }
 
     public String getCode() {

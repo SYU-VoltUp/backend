@@ -10,7 +10,7 @@ class ChargerTypeTest {
     @Test
     void getConnectorTypes() {
         List<String> connectorTypes = List.of("차데모");
-        List<ChargerType> chargerTypes = ChargerType.getChargerTypes(connectorTypes);
+        List<ChargerType> chargerTypes = ChargerType.getChargerTypesByConnectorTypes(connectorTypes);
         System.out.println("chargerTypes = " + chargerTypes);
     }
 }

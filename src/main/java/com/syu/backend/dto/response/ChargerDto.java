@@ -1,15 +1,13 @@
 package com.syu.backend.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.syu.backend.dto.common.OperatorDto;
 import com.syu.backend.enums.ChargerType;
 import com.syu.backend.enums.KindDetail;
 import com.syu.backend.model.Charger;
 
 import java.time.LocalDateTime;
 
-/**
- * DTO for {@link com.syu.backend.model.Charger}
- */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public record ChargerDto(String chargerId, String name, ChargerType chargerType, String address, double lat,
                          double lng, OperatorDto operator, int output, int zscode,
@@ -25,6 +23,4 @@ public record ChargerDto(String chargerId, String name, ChargerType chargerType,
         return output + "kW";
     }
 
-    public record OperatorDto(String id, String name) {
-    }
 }

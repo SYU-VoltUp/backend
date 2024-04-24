@@ -15,9 +15,9 @@ public class ChargerService {
 
     public ChargerDto getCharger(String chargerId) {
         Charger charger = chargerRepository.findById(chargerId)
-                .orElseThrow(() -> new NoSuchElementException("Charger with id " + chargerId + " not found"));
+                .orElseThrow(() -> new NoSuchElementException("Charger with code " + chargerId + " not found"));
         return ChargerDto.of(charger);
 
     }
-    
+
 }
