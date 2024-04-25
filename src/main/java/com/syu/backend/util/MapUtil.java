@@ -2,7 +2,6 @@ package com.syu.backend.util;
 
 import com.github.davidmoten.geo.Coverage;
 import com.github.davidmoten.geo.GeoHash;
-import com.syu.backend.dto.common.Position;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
@@ -11,8 +10,8 @@ import java.util.Set;
 public class MapUtil {
     private static final int PRECISION = 12;
 
-    public String getGeohash(Position position) {
-        return GeoHash.encodeHash(position.getLat(), position.getLng(), PRECISION);
+    public String getGeohash(double lat, double lng) {
+        return GeoHash.encodeHash(lat, lng, PRECISION);
     }
 
     public Set<String> getCoverGeohashes(double topLat, double leftLng, double bottomLat, double rightLng) {

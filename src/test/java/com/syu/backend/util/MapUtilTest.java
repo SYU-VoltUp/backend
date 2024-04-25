@@ -1,6 +1,5 @@
 package com.syu.backend.util;
 
-import com.syu.backend.dto.common.Position;
 import com.syu.backend.repository.ChargerRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +16,7 @@ class MapUtilTest {
     public void positionToGeohashTest() {
         double latitude = 38.1163;
         double longitude = 128.632;
-        Position position = new Position(latitude, longitude);
-        String hash = mapUtil.getGeohash(position);
+        String hash = mapUtil.getGeohash(latitude, longitude);
         System.out.println("hashValue: " + hash);
     }
 
