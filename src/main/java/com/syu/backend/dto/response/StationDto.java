@@ -3,6 +3,7 @@ package com.syu.backend.dto.response;
 import com.syu.backend.dto.common.OperatorDto;
 import com.syu.backend.enums.ChargerType;
 import com.syu.backend.enums.KindDetail;
+import lombok.Getter;
 import lombok.ToString;
 
 import java.util.Arrays;
@@ -10,6 +11,7 @@ import java.util.Set;
 
 //@AllArgsConstructor
 @ToString
+@Getter
 public class StationDto {
     private final String stationId;
     private final String name;

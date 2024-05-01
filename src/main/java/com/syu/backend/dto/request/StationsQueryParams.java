@@ -12,6 +12,7 @@ import org.springframework.util.Assert;
 public class StationsQueryParams {
 
     private double[] bounds;
+    //TODO: 세부 필터 구현
 
     @Builder
     public StationsQueryParams(String bounds) {

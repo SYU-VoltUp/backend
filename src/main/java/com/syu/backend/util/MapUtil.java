@@ -14,7 +14,7 @@ public class MapUtil {
         return GeoHash.encodeHash(lat, lng, PRECISION);
     }
 
-    public Set<String> getCoverGeohashes(double topLat, double leftLng, double bottomLat, double rightLng) {
+    public Set<String> getCoverGeohashes(double bottomLat, double leftLng, double topLat, double rightLng) {
 
         Coverage coverage = GeoHash.coverBoundingBoxMaxHashes(topLat, leftLng, bottomLat, rightLng, 12);
         return coverage.getHashes();

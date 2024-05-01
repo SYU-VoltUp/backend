@@ -9,8 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,7 +26,7 @@ class StationRepositoryTest {
     @DisplayName("geohash list 를 이용한 충전소 조회 테스트")
     @Test
     void findAllByGeoHashes() {
-        List<String> geoHashes = new ArrayList<>();
+        Set<String> geoHashes = new HashSet<>();
         geoHashes.add("wydm82");
         geoHashes.add("wydhq7");
         List<StationDto> stationList = stationRepository.findAllByGeoHashes(geoHashes);
