@@ -16,27 +16,21 @@ public class StationDto {
     private final String stationId;
     private final String name;
     private OperatorDto operator;
-    private KindDetail kindDetail;
-    private String address;
-    private double lat;
-    private double lng;
+    private final KindDetail kindDetail;
+    private final String address;
+    private final double lat;
+    private final double lng;
     private Set<String> connectorTypes;
 
     public StationDto(String stationId, String operatorId, String operatorName, KindDetail kindDetail, String name, String address, double lat, double lng, String chargerTypes) {
         this.stationId = stationId;
-        setOperator(operatorId, operatorName);
         this.kindDetail = kindDetail;
         this.name = name;
         this.address = address;
         this.lat = lat;
         this.lng = lng;
-        setConnectorTypes(chargerTypes);
-    }
-
-    public StationDto(String stationId, String name, String types) {
-        this.stationId = stationId;
-        this.name = name;
-        this.connectorTypes = ChargerType.getConnectorTypesFromChargerCodes(Arrays.asList(types.split(",")));
+        this.setOperator(operatorId, operatorName);
+        this.setConnectorTypes(chargerTypes);
     }
 
     private void setConnectorTypes(String types) {

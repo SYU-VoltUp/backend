@@ -6,9 +6,5 @@ spring:
         show_sql: true
 
 logging:
-    level:
-      org:
-        hibernate:
-            SQL: debug
-            type: trace
-      com.syu.backend: debug
+  level:
+    com.syu.backend: debug

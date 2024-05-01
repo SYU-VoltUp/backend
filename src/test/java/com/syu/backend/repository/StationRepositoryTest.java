@@ -31,7 +31,7 @@ class StationRepositoryTest {
         geoHashes.add("wydhq7");
         List<StationDto> stationList = stationRepository.findAllByGeoHashes(geoHashes);
         System.out.println("stationList = " + stationList);
-        assertThat(!stationList.isEmpty());
+        assertThat(stationList.isEmpty()).isFalse();
     }
 
     @DisplayName("stationId 를 이용한 충전소 조회 테스트")
@@ -40,6 +40,6 @@ class StationRepositoryTest {
         String stationId = "ACAC0001";
         StationDto station = stationRepository.findByStationId(stationId).orElse(null);
         System.out.println("station = " + station);
-        assertThat(station != null);
+        assertThat(station).isNotNull();
     }
 }

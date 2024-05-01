@@ -24,7 +24,7 @@ class ChargerRepositoryTest {
         //Target chargerId
         final String chargerId = "ACAC0001-01";
         Optional<Charger> chargerOptional = chargerRepository.findById(chargerId);
-        assertThat(chargerOptional.isPresent());
+        assertThat(chargerOptional.isPresent()).isTrue();
     }
 
 }
