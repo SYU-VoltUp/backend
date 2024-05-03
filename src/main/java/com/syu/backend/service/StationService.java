@@ -26,7 +26,7 @@ public class StationService {
         Set<String> geoHashes = mapUtil.getCoverGeohashes(bounds[0], bounds[1], bounds[2], bounds[3]);
         log.debug("geoHashes: {}", geoHashes);
         List<StationDto> stations = geoHashes.stream()
-                .flatMap(geoHash -> stationCacheService.getStationByGeoHash(geoHash).stream())
+                .flatMap(geoHash -> stationCacheService.getStationSummaries(geoHash).stream())
                 .toList();
         return stations;
     }
@@ -36,4 +36,7 @@ public class StationService {
     }
 
 
+    public StationDto getStation(String stationId) {
+        return stationCacheService.getStationDetail(stationId);
+    }
 }
