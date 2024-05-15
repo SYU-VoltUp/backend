@@ -3,6 +3,7 @@ package com.syu.backend.model;
 import com.syu.backend.enums.ChargerType;
 import com.syu.backend.enums.KindDetail;
 import com.syu.backend.enums.converter.ChargerTypeConverter;
+import com.syu.backend.enums.converter.KindDetailConverter;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -43,7 +44,7 @@ public class Charger {
     @Column(name = "zscode", nullable = false)
     private int zscode;
 
-    @Enumerated(value = EnumType.STRING)
+    @Convert(converter = KindDetailConverter.class)
     @Column(name = "kind_detail", nullable = false)
     private KindDetail kindDetail;
 

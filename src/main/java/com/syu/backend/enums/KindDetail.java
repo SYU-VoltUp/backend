@@ -62,14 +62,22 @@ public enum KindDetail {
     J004("공연장"),
     J005("관람장"),
     J006("동식물원"),
-    J007("경기장");
+    J007("경기장"),
+    UNKNOWN("알 수 없음");
 
     private final String type;
 
     KindDetail(String type) {
         this.type = type;
     }
-
+    public static KindDetail fromCode(String code) {
+        for (KindDetail kindDetail : values()) {
+            if (kindDetail.name().equals(code)) {
+                return kindDetail;
+            }
+        }
+        return UNKNOWN;
+    }
     public String getCode() {
         return name();
     }
