@@ -25,11 +25,12 @@ public interface StationRepository extends JpaRepository<Charger, String> {
 
     @Query("SELECT " +
             "NEW com.syu.backend.dto.response.StationDto( " +
-            "SUBSTRING(c.chargerId, 1,locate('-',c.chargerId)-1)," +
-            "   c.operatorId,c.operatorName, c.kindDetail, c.name,c.address,c.latitude,c.longitude," +
-            "cast(group_concat(distinct(c.chargerType)) as string))" +
+            "SUBSTRING(c.chargerId, 1, locate('-',c.chargerId)-1)," +
+            "   c.operatorId, c.operatorName, c.kindDetail, c.name, c.address, c.latitude, c.longitude," +
+            "cast(group_concat(distinct(c.chargerType)) as string), " +
+            "cast(group_concat(distinct(CASE WHEN c.output > 300 THEN 300 ELSE c.output END)) as string))" +
             "FROM Charger c WHERE c.geohash LIKE CONCAT(:geoHash,'%')" +
-            "GROUP BY SUBSTRING(c.chargerId, 1,locate('-',c.chargerId)-1)")
+            "GROUP BY SUBSTRING(c.chargerId, 1, locate('-',c.chargerId)-1)")
     List<StationDto> findByGeoHash(@Param("geoHash") String geoHash);
 
     @Query("SELECT " +

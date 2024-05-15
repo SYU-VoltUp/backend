@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.ToString;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -24,8 +25,8 @@ public class StationDto {
     private final double lng;
     private OperatorDto operator;
     private Set<String> connectorTypes;
+    private Set<String> outputs;
     private List<ChargerSummaryDto> chargers;
-
     public StationDto(String stationId, String operatorId, String operatorName, KindDetail kindDetail, String name, String address, double lat, double lng, String chargerTypes) {
         this.stationId = stationId;
         this.kindDetail = kindDetail;
@@ -35,6 +36,22 @@ public class StationDto {
         this.lng = lng;
         this.setOperator(operatorId, operatorName);
         this.setConnectorTypes(chargerTypes);
+    }
+    public StationDto(String stationId, String operatorId, String operatorName, KindDetail kindDetail, String name, String address, double lat, double lng, String chargerTypes, String outputs) {
+        this.stationId = stationId;
+        this.kindDetail = kindDetail;
+        this.name = name;
+        this.address = address;
+        this.lat = lat;
+        this.lng = lng;
+        this.setOperator(operatorId, operatorName);
+        this.setConnectorTypes(chargerTypes);
+        if(outputs != null) {
+            this.outputs = Set.of(outputs.split(","));
+        }else{
+            this.outputs = new HashSet<>();
+        }
+
     }
 
     private void setConnectorTypes(String types) {
