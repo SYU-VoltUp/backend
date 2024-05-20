@@ -77,6 +77,7 @@ jobs:
           port: ${{ secrets.SYU_PORT }}
           script: |
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/syu-voltup:backend
-            docker-compose up -d syu-voltup-backend
+            cd syu_voltup_deploy
+            docker-compose up -d syu_voltup_backend
 #            docker rm syu-voltup
 #            docker run --name syu-voltup -d -p 80:8080 --restart=unless-stopped ${{ secrets.DOCKERHUB_USERNAME }}/syu-voltup
