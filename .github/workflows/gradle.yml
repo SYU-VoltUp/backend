@@ -64,7 +64,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/syu-voltup:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/syu-voltup:backend
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -76,7 +76,7 @@ jobs:
           key: ${{ secrets.SYU_KEY }}
           port: ${{ secrets.SYU_PORT }}
           script: |
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/syu-voltup
-            docker stop syu-voltup
-            docker rm syu-voltup
-            docker run --name syu-voltup -d -p 80:8080 --restart=unless-stopped ${{ secrets.DOCKERHUB_USERNAME }}/syu-voltup
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/syu-voltup:backend
+            docker-compose up -d syu-voltup-backend
+#            docker rm syu-voltup
+#            docker run --name syu-voltup -d -p 80:8080 --restart=unless-stopped ${{ secrets.DOCKERHUB_USERNAME }}/syu-voltup
