@@ -20,10 +20,12 @@ public class StationsQueryParams {
     private Set<String> outputs;
     //충전 타입
     private Set<String> types;
+
+    private String keyword;
     //TODO: 세부 필터 구현
 
     @Builder
-    public StationsQueryParams(String bounds, String outputs, String types) {
+    public StationsQueryParams(String bounds, String outputs, String types, String keyword) {
         if (bounds != null) {
             String[] boundsArray = bounds.split(",");
             Assert.isTrue(boundsArray.length == 4, "Bounds must have 4 values");
@@ -42,6 +44,7 @@ public class StationsQueryParams {
         if (types != null) {
             this.types = Set.of(types.split(","));
         }
+        this.keyword = keyword;
     }
 
 

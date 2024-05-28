@@ -51,6 +51,14 @@ public class StationService {
                 );
             }
         }
+        //키워드 필터링
+        if (stationsQueryParams.getKeyword() != null) {
+            String keyword = stationsQueryParams.getKeyword();
+            if(!keyword.isEmpty())
+                stationsStream = stationsStream.filter(station ->
+                        station.getName().contains(keyword) || station.getAddress().contains(keyword)
+                );
+        }
         return stationsStream.toList();
     }
 
